@@ -1,0 +1,155 @@
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+		<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+		<title></title>
+	</head>
+
+    <body>
+		<div class="back" onclick="window.history.go(-1)" role="a"><span class="glyphicon glyphicon-arrow-left"/></div>
+		<div class="container">
+			<div class="row" id="owlTitle">
+				<div class="col-xs-12">
+				  <h3 class="text-center">我申请的</h3>
+				</div>
+				<div>
+					<br/><br/>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<if condition="$numFinished neq 0">
+				<div class="container">
+				
+					<div class="row">
+						<h4 align="center">已完成的交换</h4>
+					</div>
+					
+					<div class="panel-group" id="accordion">
+						<for start="0" end="$numFinished">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#{$result['finished'][$i]['excid']}">
+											书名：{$result['finished'][$i]['book']}&nbsp;&nbsp;发起日期：{$result['finished'][$i]['starttime']}&nbsp;&nbsp;
+										</a>
+									</h4>
+								</div>
+								<div id="{$result['finished'][$i]['excid']}" class="panel-collapse collapse">
+									<div class="panel-body">
+										书籍描述：{$result['finished'][$i]['bookstatement']}<br/>
+										交换描述：{$result['finished'][$i]['description']}<br/>
+										交换条件：<br/>
+											①{$result['finished'][$i]['condition1']}<br/>
+										<if condition="$result['finished'][$i]['condition2']!=null">
+											②{$result['finished'][$i]['condition2']}<br/>
+										</if>
+										<if condition="$result['finished'][$i]['condition3']!=null">
+											③{$result['finished'][$i]['condition3']}<br/>
+										</if>
+										<if condition="$result['finished'][$i]['condition4']!=null">
+											④{$result['finished'][$i]['condition4']}<br/>
+										</if>
+										<a role="button" class="btn btn-info" href="__CONTROLLER__/completedExcDetail/excid/{$result['finished'][$i]['excid']}" >
+											点击查看详情
+										</a>
+									</div>
+								</div>
+							</div>
+						</for>
+					</div>
+				</div>
+			</if>
+			<hr/>
+			<if condition="$numUnfinished neq 0">
+				<div class="container">
+					
+					<div class="row">
+						<h4 align="center">未完成的交换</h4>
+					</div>
+					
+					<div class="panel-group" id="accordion">
+						<for start="0" end="$numUnfinished">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#{$result['unfinished'][$i]['excid']}">
+											书名：{$result['unfinished'][$i]['book']}&nbsp;&nbsp;发起日期：{$result['unfinished'][$i]['starttime']}&nbsp;&nbsp;
+										</a>
+									</h4>
+								</div>
+								<div id="{$result['unfinished'][$i]['excid']}" class="panel-collapse collapse">
+									<div class="panel-body">
+										书籍描述：{$result['unfinished'][$i]['bookstatement']}<br/>
+										交换描述：{$result['unfinished'][$i]['description']}<br/>
+										交换条件：<br/>
+											①{$result['unfinished'][$i]['condition1']}<br/>
+										<if condition="$result['unfinished'][$i]['condition2']!=null">
+											②{$result['unfinished'][$i]['condition2']}<br/>
+										</if>
+										<if condition="$result['unfinished'][$i]['condition3']!=null">
+											③{$result['unfinished'][$i]['condition3']}<br/>
+										</if>
+										<if condition="$result['unfinished'][$i]['condition4']!=null">
+											④{$result['unfinished'][$i]['condition4']}<br/>
+										</if>
+									</div>
+								</div>
+							</div>
+						</for>
+					</div>
+				</div>
+			</if>
+			<hr/>
+			<if condition="$numRefused neq 0">
+				
+				<div class="row">
+					<h4 align="center">被拒绝的交换</h4>
+				</div>
+				
+				<div class="container">
+					<div class="panel-group" id="accordion">
+						<for start="0" end="$numRefused">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#{$result['refused'][$i]['excid']}">
+											书名：{$result['refused'][$i]['book']}&nbsp;&nbsp;发起日期：{$result['refused'][$i]['starttime']}&nbsp;&nbsp;
+										</a>
+									</h4>
+								</div>
+								<div id="{$result['refused'][$i]['excid']}" class="panel-collapse collapse">
+									<div class="panel-body">
+										书籍描述：{$result['refused'][$i]['bookstatement']}<br/>
+										交换描述：{$result['refused'][$i]['description']}<br/>
+										交换条件：<br/>
+											①{$result['refused'][$i]['condition1']}<br/>
+										<if condition="$result['refused'][$i]['condition2']!=null">
+											②{$result['refused'][$i]['condition2']}<br/>
+										</if>
+										<if condition="$result['refused'][$i]['condition3']!=null">
+											③{$result['refused'][$i]['condition3']}<br/>
+										</if>
+										<if condition="$result['refused'][$i]['condition4']!=null">
+											④{$result['refused'][$i]['condition4']}<br/>
+										</if>
+									</div>
+								</div>
+							</div>
+						</for>
+					</div>
+				</div>
+			</if>
+			
+		</div>
+	</body>
+</html>

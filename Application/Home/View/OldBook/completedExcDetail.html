@@ -1,0 +1,234 @@
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+		<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+		<title></title>
+	</head>
+  
+	<style>
+	.tabfont{
+		font-size:15px;
+		color:rgba(255,255,255,0.7);
+		font-weight:500;
+	}
+			
+	li{
+		background-color:#B17844;
+		hover{color:#C73E3A;}
+		width:33%;
+	}
+				 
+	tr{
+		font-size:17px;
+		color:	#FCE6C9;
+		font-weight:600;
+		width:30%;
+	}
+	
+	.rowa{
+		background-color:#B17844;
+		font-size:15px;
+		color:#A1A1A1;
+		margin-left:4%;
+		margin-right:5%;
+	}
+
+	</style>
+	
+	
+    <body>
+		<div class="back" onclick="window.history.go(-1)" role="a"><span class="glyphicon glyphicon-arrow-left"/></div>
+		<div class="container">
+			<div class="row" id="owlTitle">
+				<div class="col-xs-12">
+				  <h3 class="text-center">高校猫头鹰</h3>
+				</div>
+			</div>
+			<div class="row" id="owlTitle">
+				<div class="col-xs-12">
+				  <h4 class="text-center">已完成的交换</h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-pills " role="tablist">
+				<li role="presentation" class="active">
+					<a href="#a" aria-controls="home" role="tab" data-toggle="tab" class="tabfont">
+						发起者
+						<if condition=" session('user.id') eq $result['starter']['id'] ">
+							(我) 
+						</if>
+					</a>
+				</li>
+				<li role="presentation" >
+					<a href="#b" aria-controls="profile" role="tab" data-toggle="tab" class="tabfont">
+						申请者
+						<if condition=" session('user.id') eq $result['applier']['id'] ">
+							(我)
+						</if>
+					</a>
+				</li>
+				<li role="presentation">
+				    <a href="#c" aria-controls="profile" role="tab" data-toggle="tab" class="tabfont">
+                       交换信息
+					</a>
+				</li>
+			  </ul>
+
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="a">
+				  <div class="row">
+				    <div class="jumbotron rowa opacity-6">
+					  <table class="table">
+					
+					  <tr>
+					  <td>昵称：</td>
+					  <td>{$result['starter']['nickname']}</td>
+					  </tr>	
+					  
+					  
+					  <tr>
+					  <td>手机号：</td>
+					  <td>{$result['starter']['phone']}</td>
+					  </tr>	
+					  
+					  <tr>
+					  <td>性别：</td>
+					  <td>
+						<if condition="$result['starter']['sex'] eq '1' ">
+							男
+						</if>
+						<if condition="$result['starter']['sex'] eq '2' ">
+							女
+						</if>
+					  </td>
+					  </tr>		
+					  
+					  <tr>
+					  <td>学院：</td>
+					  <td>{$result['starter']['school']}</td>
+					  </tr>	
+					  
+					</table>
+				   </div>
+				 </div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="b">
+				  <div class="row">
+				    <div class="jumbotron rowa">
+					<table class="table">
+					
+					   <tr>
+					  <td>昵称：</td>
+					  <td>{$result['applier']['nickname']}</td>
+					  </tr>	
+					  
+					  
+					  <tr>
+					  <td>手机号：</td>
+					  <td>{$result['applier']['phone']}</td>
+					  </tr>	
+					  
+					  <tr>
+					  <td>性别：</td>
+					  <td>
+						<if condition="$result['applier']['sex'] eq '1' ">
+							男
+						</if>
+						<if condition="$result['applier']['sex'] eq '2' ">
+							女
+						</if>
+					  </td>
+					  </tr>		
+					  
+					  <tr>
+					  <td>学院：</td>
+					  <td>{$result['applier']['school']}</td>
+					  </tr>	
+					  
+					</table>
+				   </div>
+				 </div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="c">
+				  <div class="row">
+				    <div class="jumbotron rowa">
+						<table class="table">
+						  <tr>
+							  <td>书名：</td>
+							  <td>{$result['exchange']['book']}</td>
+						  </tr>
+						  
+						  <tr >
+							  <td class="col-xs-5">书籍介绍：</td>
+							  <td class="col-xs-7">{$result['exchange']['bookstatement']}</td>
+						  </tr>	
+						  
+						  <tr>
+							<td>交换条件：</td>
+							<td>
+								①{$result['exchange']['condition1']}&nbsp;&nbsp;
+								<if condition="$result['apply']['satisfy1'] eq 1">
+								<span class="glyphicon glyphicon-ok" ></span>
+								<else/><span class="glyphicon glyphicon-remove" ></span>
+								</if><br/>
+								②{$result['exchange']['condition2']}&nbsp;&nbsp;
+								<if condition="$result['apply']['satisfy1'] eq 1">
+								<span class="glyphicon glyphicon-ok" ></span>
+								<else/><span class="glyphicon glyphicon-remove" ></span>
+								</if><br/>
+								③{$result['exchange']['condition3']}&nbsp;&nbsp;
+								<if condition="$result['apply']['satisfy1'] eq 1">
+								<span class="glyphicon glyphicon-ok" ></span>
+								<else/><span class="glyphicon glyphicon-remove" ></span>
+								</if><br/>
+								④{$result['exchange']['condition4']}&nbsp;&nbsp;
+								<if condition="$result['apply']['satisfy1'] eq 1">
+								<span class="glyphicon glyphicon-ok" ></span>
+								<else/><span class="glyphicon glyphicon-remove" ></span>
+								</if><br/>
+							</td>
+						  </tr>		
+						  
+						  <tr>
+							  <td class="col-xs-5">交换发起时间：</td>
+							  <td class="col-xs-7">{$result['exchange']['starttime']}</td>
+						  </tr>	
+						  
+						  <tr>
+							  <td class="col-xs-5">交换描述：</td>
+							  <td class="col-xs-7">{$result['exchange']['description']}</td>
+						  </tr>	
+						  
+						  <hr/>
+						  
+						  <tr >
+							  <td class="col-xs-5">申请时间：</td>
+							  <td class="col-xs-7">{$result['apply']['applytime']}</td>
+						  </tr>	
+						  
+						  <tr >
+							  <td class="col-xs-5">申请描述：</td>
+							  <td class="col-xs-7">{$result['apply']['description']}</td>
+						  </tr>	
+						  
+						</table>
+				   </div>
+				 </div>
+			   </div>
+			  </div>
+		</div>
+	</body>
+</html>

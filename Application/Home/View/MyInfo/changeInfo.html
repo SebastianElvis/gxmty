@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/css/owl-theme.css">
+		<link rel="stylesheet" href="__PUBLIC__/css/jquery.mobile.icons.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+
+		<style>
+		#infoForm{
+			padding-top: 5%;
+		}
+		</style>
+
+		<title>Change Infomation</title>
+	
+	</head>
+
+	<body>
+
+		<div data-role="header" data-position="fixed" id="owlTitle">
+			<button onclick="window.history.go(-1)" data-role="button" data-icon="arrow-l">back</button>
+			<h3 id="title">Change Infomation</h3>
+		</div>
+
+		<div data-role="content">
+			<form id="infoForm" method="post" action="../MyInfo/submitChange" data-ajax="false">
+
+				<label for="inputNickName" >Nickname:</label>
+				<input type="text" name="nickName" id="inputNickName" value="{$result['nickname']}" placeholder="Nickname..."/>
+
+				<label for="inputPhone" >Phone:</label>
+				<input type="text" name="phone" id="inputPhone" value="{$result['phone']}" placeholder="Phone..."/>
+
+				<label for="inputPassword" >Password:</label>
+				<input type="password" name="password" id="inputPassword" value="{$result['password']}" placeholder="Password..."/>
+
+				<label for="inputSchool" >School:</label>
+				<select name="school" id="inputSchool" value="{$result['school']}">
+					<option value="信息与通信工程学院" >信息与通信工程学院</option>
+	                <option value="电子工程学院" >电子工程学院</option>
+	                <option value="计算机学院" >计算机学院</option>
+	                <option value="自动化学院" >自动化学院</option>
+	                <option value="经济管理学院" >经济管理学院</option>
+	                <option value="理学院" >理学院</option>
+	                <option value="软件学院" >软件学院</option>
+	                <option value="人文学院" >人文学院</option>
+	                <option value="数字媒体与设计艺术学院" >数字媒体与设计艺术学院</option>
+	                <option value="公共管理学院" >公共管理学院</option>
+	                <option value="国际学院" >国际学院</option>
+				</select>
+
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<label for="inputSex1" >我是汉子</label>
+					<input type="radio" name="sex" id="inputSex1" value=1 />
+					<label for="inputSex2" >我是妹子</label>
+					<input type="radio" name="sex" id="inputSex2" value=0 />
+				</fieldset>
+
+				<label for="inputStudentNumber" >StudentNumber:</label>
+				<input type="text" name="studentNumber" id="inputStudentNumber" value="{$result['studentNumber']}" placeholder="StudentNumber..."/>
+
+				<input type="submit" value="提交" /> 
+			</form>
+		</div>
+
+		<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="__PUBLIC__/js/navigation.js"></script>
+	</body>
+
+</html>

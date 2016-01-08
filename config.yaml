@@ -1,0 +1,3 @@
+handle:
+- rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
+- directoryindex:  index.php/home/Index/hello 

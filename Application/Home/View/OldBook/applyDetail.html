@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <title></title>
+	
+	<style>
+	
+	.rowa{
+		 background-color:#9F3F3A;
+		 font-size:15px;
+		 color:#A1A1A1;
+		 opacity:0.6;
+	 }
+	 
+	 
+	 .rowb{	 
+		 background-color:#B17844;
+		 font-size:15px;
+		 color:#A1A1A1;
+		 opacity:0.6;
+		 margin-top:-8%;
+	 }
+	 
+	 dt{
+		 font-size:20px;
+		 color:#fff8dc;
+	 }
+	 
+	 dd{
+		color:#fff8dc;
+	 }
+	 
+	 h4{
+		color:white;
+	 }
+	</style>
+	
+	
+  </head>
+  
+  <body>
+	<div class="back" onclick="window.history.go(-1)" role="a"><span class="glyphicon glyphicon-arrow-left"/></div>
+	<div class="container">
+		<div class="row" id="owlTitle">
+			<div class="col-xs-12">
+			  <h3 class="text-center">交易细节</h3>
+			</div>
+			<div>
+				<br/><br/>
+			</div>
+		</div>
+		<div class="row">
+		  <div class="col-xs-10 col-xs-offset-1">
+			<div class="jumbotron rowa">
+			  <dl class="dl-horizontal">
+				<dt>书名：</dt>
+				<dd>{$excDetail['book']}<br/></dd>
+				<dt>条件：</dt>
+				<dd>①{$excDetail['condition1']}<br/>
+				<if condition="$excDetail['condition2']!=null">
+					②{$excDetail['condition2']}<br/>
+				</if>
+				<if condition="$excDetail['condition3']!=null">
+					③{$excDetail['condition3']}<br/>
+				</if>
+				<if condition="$excDetail['condition4']!=null">
+					④{$excDetail['condition4']}<br/>
+				</if>
+				</dd>
+			  </dl>
+		    </div>
+		  </div>
+		</div>
+		
+		<for start="0" end="$resultCount">
+			<div class="row">
+		      <div class="col-xs-10 col-xs-offset-1">
+			    <div class="jumbotron rowb">
+				<table class="table table-bordered">
+				  <dl class="dl-horizontal">
+					<h4>申请{$i+1}</h4>
+					<dt>满足条件：</dt>
+					<dd>①<if condition="$result[$i]['satisfy1'] eq 1">
+					<span class="glyphicon glyphicon-ok" />
+					<else/><span class="glyphicon glyphicon-remove" />
+					</if></dd>
+					<dd>②<if condition="$result[$i]['satisfy2'] eq 1">
+					<span class="glyphicon glyphicon-ok" />
+					<else/><span class="glyphicon glyphicon-remove" />
+					</if></dd>
+					<dd>③<if condition="$result[$i]['satisfy3'] eq 1">
+					<span class="glyphicon glyphicon-ok" />
+					<else/><span class="glyphicon glyphicon-remove" />
+					</if></dd>
+					<dd>④<if condition="$result[$i]['satisfy4'] eq 1">
+					<span class="glyphicon glyphicon-ok" />
+					<else/><span class="glyphicon glyphicon-remove" />
+					</if></dd>
+					<dt>申请描述：</dt>
+					<dd>{$result[$i]['description']}</dd>
+					<dt>申请时间：</dt>
+					<dd>{$result[$i]['applytime']}</dd>
+					<a role="button" href="__CONTROLLER__/acceptApply/applyid/{$result[$i]['applyid']}" class="col-xs-offset-1 btn btn-success">接受申请</a>&nbsp;
+					<a role="button" href="__CONTROLLER__/refuseApply/applyid/{$result[$i]['applyid']}" class="btn btn-warning">拒绝申请</a>
+				  </dl>
+				</table>
+				</div>
+			  </div>
+			</div>
+		</for>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+
+  <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js">
+</script><!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js">
+</script>
+
+  <title>PDF.js解析PDF文件</title>
+</head>
+
+<body>
+  <h2 align="center">预览PDF</h2>
+  <p align="center" id="document">{$url}</p>
+  <div align="center">
+    <button id="prev" class="btn btn-info" onclick="goPrevious()">上一页</button> &nbsp;&nbsp;&nbsp;
+	<font size="4px">Page: <span id="page_num"></span> / <span id="page_count"></span></font> &nbsp;&nbsp;&nbsp;
+	<button id="next" class="btn btn-info" onclick="goNext()">下一页</button>
+  </div>
+	<br/>
+  <div align="center">
+    <canvas id="the-canvas" style="border:1px solid black"></canvas>
+  </div><!-- Use latest PDF.js build from Github -->
+  <script type="text/javascript" src="__PUBLIC__/pdfViewer/js/pdf.js">
+</script> <script type="text/javascript">
+//<![CDATA[
+    //
+    // NOTE: 
+    // Modifying the URL below to another server will likely *NOT* work. Because of browser
+    // security restrictions, we have to use a file server with special headers
+    // (CORS) - most servers don't support cross-origin browser requests.
+    //
+	
+    //var url = 'http://gxmty-buptfile.stor.sinaapp.com/Q1.pdf';
+	var storeUrl="http://gxmty-buptfile.stor.sinaapp.com/";
+	var url=storeUrl + $("#document").html();
+
+    //
+    // Disable workers to avoid yet another cross-origin issue (workers need the URL of
+    // the script to be loaded, and currently do not allow cross-origin scripts)
+    //
+    PDFJS.disableWorker = true;
+
+    var pdfDoc = null,
+        pageNum = 1,
+        scale = 1.5,
+        canvas = document.getElementById('the-canvas'),
+        ctx = canvas.getContext('2d');
+
+    //
+    // Get page info from document, resize canvas accordingly, and render page
+    //
+    function renderPage(num) {
+      // Using promise to fetch the page
+      pdfDoc.getPage(num).then(function(page) {
+        var viewport = page.getViewport(scale);
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        // Render PDF page into canvas context
+        var renderContext = {
+          canvasContext: ctx,
+          viewport: viewport
+        };
+        page.render(renderContext);
+      });
+
+      // Update page counters
+      document.getElementById('page_num').textContent = pageNum;
+      document.getElementById('page_count').textContent = pdfDoc.numPages;
+    }
+
+    //
+    // Go to previous page
+    //
+    function goPrevious() {
+      if (pageNum <= 1)
+        return;
+      pageNum--;
+      renderPage(pageNum);
+    }
+
+    //
+    // Go to next page
+    //
+    function goNext() {
+      if (pageNum >= pdfDoc.numPages)
+        return;
+      pageNum++;
+      renderPage(pageNum);
+    }
+
+    //
+    // Asynchronously download PDF as an ArrayBuffer
+    //
+    PDFJS.getDocument(url).then(function getPdfHelloWorld(_pdfDoc) {
+      pdfDoc = _pdfDoc;
+      renderPage(pageNum);
+    });
+  //]]>
+  </script><style id="jsbin-css">
+</style>
+</body>
+</html>

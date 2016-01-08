@@ -1,0 +1,27 @@
+<script src="__PUBLIC__/js/buyGoods.js"></script>
+
+<div class="row-fluid">
+	<div class="col-xs-12">
+		<h4>{$type}</h4>
+	</div>
+</div>
+<for start="0" end="$goodsNum">
+	<div class="row">
+		<div class="col-xs-6" >
+			<div class="hidden">{$goods[$i]['itemid']}</div>
+			<span>{$goods[$i]['name']}</span>
+		</div>
+		<button role="div" class="col-xs-1 addNum hidden" style="padding:0 0 0 0">
+			<span class="glyphicon glyphicon-plus" />
+		</button>
+		<div class="col-xs-3" id="{$goods[$i]['itemid']}">
+			<input type="text" class="form-control number" value=0 style="padding:0 0 0 0"/>
+		</div>
+		<button role="div" class="col-xs-1 decNum hidden" style="padding:0 0 0 0">
+			<span class="glyphicon glyphicon-minus" />
+		</button>
+		<div class="col-xs-1 ajaxChange" >
+			
+		</div>
+	</div>
+</for>

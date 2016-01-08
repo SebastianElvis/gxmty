@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+    <title></title>
+  </head>
+  
+  <body>
+	<div class="back" onclick="window.history.go(-1)" role="a"><span class="glyphicon glyphicon-arrow-left"/></div>
+
+	<div class="container">
+		<div class="row" id="owlTitle">
+			<div class="col-xs-12">
+			  <h3 class="text-center">我发起的</h3>
+			</div>
+			<div>
+				<br/>
+			</div>
+		</div>
+		<div class="panel-group" id="accordion">
+			<for start="0" end="$resultCount">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#{$result[$i]['excid']}">
+								书名：{$result[$i]['book']}&nbsp;&nbsp;发起日期：{$result[$i]['starttime']}&nbsp;&nbsp;
+								<if condition="$result[$i]['status'] eq 2">
+									<span class="text-danger">已达成交易</span>
+								</if>
+								<if condition="$result[$i]['status'] eq 1">
+									<span class="text-warning">已有人申请</span>
+								</if>
+								<if condition="$result[$i]['status'] eq 0">
+									没有人申请
+								</if>
+							</a>
+						</h4>
+					</div>
+					<div id="{$result[$i]['excid']}" class="panel-collapse collapse">
+						<div class="panel-body">
+						书籍描述：{$result[$i]['bookstatement']}<br/>
+						交换描述：{$result[$i]['description']}<br/>
+						交换条件：<br/>
+							①{$result[$i]['condition1']}<br/>
+						<if condition="$result[$i]['condition2']!=null">
+							②{$result[$i]['condition2']}<br/>
+						</if>
+						<if condition="$result[$i]['condition3']!=null">
+							③{$result[$i]['condition3']}<br/>
+						</if>
+						<if condition="$result[$i]['condition4']!=null">
+							④{$result[$i]['condition4']}<br/>
+						</if>
+						交换状态：
+						<if condition="$result[$i]['status'] eq 2">
+							已达成交易，
+							<a role="button" class="btn btn-info" href="__CONTROLLER__/completedExcDetail/excid/{$result[$i]['excid']}" >
+							点击查看详情</a>
+						</if>
+						<if condition="$result[$i]['status'] eq 1">
+							已有人申请，
+							<a role="button" class="btn btn-info" href="__CONTROLLER__/applyDetail/excid/{$result[$i]['excid']}" >点击查看详情</a>
+						</if>
+						<if condition="$result[$i]['status'] eq 0">
+							没有人申请
+						</if>
+						</div>
+					</div>
+				</div>
+			</for>
+		</div>
+	</div>
+	
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+    <title>高校猫头鹰登陆界面</title>
+    <style type="text/css">
+        body{
+                background:url('__PUBLIC__/images/loginBackground.jpg')no-repeat; 
+                background-size:cover;
+        }
+        
+		#wechatLogo{
+			width:20px;
+			height:20px;
+		}
+	</style>
+  </head>
+  <body>
+    <div class="container-fluid">
+		<div class="row">
+		  <h1 align="center">高校猫头鹰</h1>
+		</div>
+		<div class="row">
+			<img src="__PUBLIC__/images/owl.jpg" class="col-xs-10 col-xs-offset-1">
+		</div>
+		<h3 class="text-center">登录</h3>
+      <div class="row rowcolor">
+        <div class="col-xs-8 col-xs-offset-2 text-center">
+          <form class="form-horizontal" action="../MyInfo/checkLogin" method="post">
+		  <br/>
+            <div class="row form-group">
+              <label class="col-xs-4 control-label" for="inputPhone">手机</label>
+              <input class="col-xs-8" id="inputPhone" type="text" name="phone" placeholder="PhoneNumber"/>
+            </div>
+            <div class="row form-group">
+              <label class="col-xs-4 control-label" for="inputPassword">密码</label>
+              <input class="col-xs-8" id="inputPassword" type="password" name="password" placeholder="Password"/>
+            </div>
+			
+            <div class="row form-group rememberMe">
+				<div class="controls">
+					<label class="col-xs-9 checkbox-inline" >Remenber me</label>
+					<input class="col-xs-3" type="checkbox" />
+				</div>
+            </div>
+			
+            <div class="form-group">
+              <div class="col-xs-offset-1 col-xs-10">
+                <button class="btn btn-success btn-block" type="submit">登录</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-offset-1 col-xs-10">
+                <a href="register" class="btn btn-info btn-block" role="button">注册</a>
+              </div>
+			  <div class="col-xs-1">
+				<a href="../WeChat/oauth"><img id="wechatLogo" src="__PUBLIC__/images/wechat.png"></img></a>
+			  </div>
+            </div>
+          </form>
+        </div>
+      </div>
+	  <div align="center" class="row">
+		<br/>
+		<p><font color="#fff">@Owl University</font></p>
+	  </div>
+    </div>
+  </body>
+</html>

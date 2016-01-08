@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<!-- <script src="/Public/js/verifyRegister.js"></script> -->
+	<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+	
+	<script type="text/javascript">
+	
+		function verifyRegister(){
+			var phone=document.getElementById('inputPhone').value;
+			var password=document.getElementById('inputPassword').value;
+			//alert(phone);
+			if( phone == '' ){
+				alert('手机号不能为空！');
+				return false;
+			}
+			else if( password == '' ){
+				alert('密码不能为空！');
+				return false;
+			}
+			else return true;
+		}
+		
+		
+	</script>
+	
+    <title>高校猫头鹰注册界面</title>
+    <style type="text/css">
+        body{
+			background:url('__PUBLIC__/images/loginBackground.jpg')no-repeat; 
+			background-size:cover;
+        }
+    </style>
+  </head>
+  <body>
+	<div class="back" onclick="window.history.go(-1)" role="a"><span class="glyphicon glyphicon-arrow-left"/></div>
+	<div class="container-fluid">
+	  <div class="row">
+		<h1 align="center">高校猫头鹰</h1>
+		<h3 align="center">注册页面</h3>
+      </div>
+	  <div class="row">
+	    <div class="col-xs-10 col-xs-offset-1 rowcolor text-center">
+		<br/>
+		  <form class="form-horizontal" action="../MyInfo/checkRegister" method="post" onsubmit="return verifyRegister()">
+            <div class="form-group">
+              <div class="col-xs-10 col-xs-offset-1">
+                <input class="form-control" id="inputPhone" type="text" name="phone" placeholder="请输入手机号"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-10 col-xs-offset-1">
+                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="请输入密码" />
+              </div>
+            </div>
+            <div class="form-group">
+			  <div class="col-xs-8 col-xs-offset-2">
+                <select class="form-control" id="inputSchool" name="school" value="请选择学院">
+                <option value="信息与通信工程学院" >信息与通信工程学院</option>
+                <option value="电子工程学院" >电子工程学院</option>
+                <option value="计算机学院" >计算机学院</option>
+                <option value="自动化学院" >自动化学院</option>
+                <option value="经济管理学院" >经济管理学院</option>
+                <option value="理学院" >理学院</option>
+                <option value="软件学院" >软件学院</option>
+                <option value="人文学院" >人文学院</option>
+                <option value="数字媒体与设计艺术学院" >数字媒体与设计艺术学院</option>
+                <option value="公共管理学院" >公共管理学院</option>
+                <option value="国际学院" >国际学院</option>
+                </select>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label class="radio-inline">
+              <input class="col-xs-4" type="radio" name="sex" id="inputSex1" value=1 /> 我是汉子</label> 
+              <label class="radio-inline">
+              <input  class="col-xs-4" type="radio" name="sex" id="inputSex2" value=2 /> 我是妹子</label>
+            </div>
+            <div class="form-group">
+              <div class="controls">
+                <input type="submit" class="col-xs-8 col-xs-offset-2 btn btn-success block" value="注册"/>
+              </div>
+            </div>
+          </form>
+		  <div align="center">
+			<p class="text-success">Notice：注册后可在“我的信息”中进一步完善个人资料，以便能与交换方取得联系</p>
+		  </div>
+		</div>
+	  </div>
+    </div>
+  </body>
+</html>

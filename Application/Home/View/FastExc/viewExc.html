@@ -1,0 +1,97 @@
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+		<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+		<title>高校猫头鹰 | 查看快速交易</title>
+		
+		<script>
+		
+		var number = $('.number').attr('id');
+		var color=new Array('#823935','#89BEB2','#C9BA83','#DED38C');
+		
+		function getResults(){
+			var i=0;
+			$.getJSON(
+				'./getSomeResults',
+				function(jsonData){
+					
+					//alert(jsonData.data[i].book);
+					$('.exc').each(
+						function(){
+							var id=$(this).parent().attr('id');
+							$(this).css('background-color',color[id]);
+							$(this).children('#book').html('书名：' + jsonData.data[id].book);
+							$(this).children('#wechat').html('微信：' + jsonData.data[id].startwechat);
+							$(this).children('#desc').html('描述：' + jsonData.data[id].description);
+							$(this).children('#time').html('时间：' + jsonData.data[id].startdate);
+						}
+					);
+				}
+			);
+		}
+		
+		 $(document).ready(
+			function(){
+				
+				getResults();
+				
+				$("#shuffle").click(
+					function(){
+						getResults();
+						$('#exchange').fadeOut(
+							'slow',
+							'swing',
+							function(){
+								$('#exchange').show();
+							}
+						);
+					}
+				);
+			}
+		 );
+		
+		</script>
+	
+	</head>
+	
+	
+    <body>
+		<h3 align="center">查看快速交易</h3>
+		<div class="back" onclick="window.history.go(-1)" role="a"><span class="glyphicon glyphicon-arrow-left"/></div>
+		<span class="number" id="{$range}" ></span>
+		<div class="container">
+			<div id="exchange">
+				<for start="0" end="$range">
+					<div class="row" id="{$i}">
+						<div class="col-xs-10 col-xs-offset-1 exc opacity-7">
+							<p id="book">书名：</p>
+							<p id="wechat">微信号：</p>
+							<p id="desc">描述：</p>
+							<p id="time">时间：</p>
+						</div>
+					</div>
+				</for>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-2">
+					<button class="btn btn-default btn-block" id="shuffle">换一组</button>
+				</div>
+				<div class="col-xs-4">
+					<a role="button" class="btn btn-default btn-block" href="./startExc">我要发布</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	
+</html>

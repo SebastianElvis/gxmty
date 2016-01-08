@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/css/owl-theme.css">
+		<link rel="stylesheet" href="__PUBLIC__/css/jquery.mobile.icons.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+
+		<title>Start Exchange</title>
+	</head>
+  
+	<body>
+
+	  	<div data-role="page">
+
+			<div data-role="header" data-position="fixed" id="owlTitle">
+				<button onclick="window.history.go(-1)" data-role="button" data-icon="arrow-l">Back</button>
+				<h3>发起交换</h3>
+			</div>
+			
+			<div data-role="content">
+				<form id="startExcForm" method="post" action="./submitExchange" data-ajax="false">
+					<label for="inputBook" >Book:</label>
+					<input type="text" name="book" id="inputBook" placeholder="Bookname..."/>
+
+					<label for="inputBookStat" >Book Statement:</label>
+					<input type="text" name="bookStat" id="inputBookStat" placeholder="Statement..."/>
+
+					<label for="inputCondition1" >Condition1:</label>
+					<input type="text" name="condition1" id="inputCondition1" placeholder="Condition1..."/>
+					<label for="inputCondition2" >Condition2:</label>
+					<input type="text" name="condition2" id="inputCondition2" placeholder="Condition2..."/>
+					<label for="inputCondition3" >Condition3:</label>
+					<input type="text" name="condition3" id="inputCondition3" placeholder="Condition3..."/>
+					<label for="inputCondition4" >Condition4:</label>
+					<input type="text" name="condition4" id="inputCondition4" placeholder="Condition4..."/>
+
+					<label for="inputDescription" >Description:</label>
+					<textarea name="description" id="inputDescription" placeholder="Description..." ></textarea>
+
+					<input type="submit" value="提交" /> 
+				</form>
+		    </div>
+
+		</div>
+
+		<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	</body>
+</html>

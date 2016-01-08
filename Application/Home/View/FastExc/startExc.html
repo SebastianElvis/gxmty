@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+    <title>高校猫头鹰 | 发布快速交易</title>
+	
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+	<style type="text/css">
+	#formExc{
+		height:60%;
+		padding-left:3%;
+		padding-right:3%;
+	}
+	
+	.formGrp{
+		width:90%;
+		margin:0 auto;
+		padding:3%;
+	}
+	
+	#formWechat{
+		background-color:#9F3F3A;
+	}
+	
+	#formBook{
+		background-color:#C7802D;
+	}
+	
+	#formDesc{
+		background-color:#BF8957;
+	}
+	
+	#otherExc{
+		position:fixed;
+		bottom:0%;
+		right:0%;
+	}
+	
+	</style>
+	
+	<script type="text/javascript">
+	function verify(){
+		var wechat=$('#inputWeChat').val();
+		var book=$('#inputBook').val();
+		var desc=$('#inputDescription').val();
+		if(wechat == ''){
+			alert('微信号不能为空！');
+			return false;
+		}
+		else if(book == ''){
+			alert('书名不能为空！');
+			return false;
+		}
+		else if(desc == ''){
+			alert('描述不能为空！');
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	</script>
+	
+  </head>
+  
+  <body>
+	<div class="back" onclick="window.history.go(-1)" role="a"><span class="glyphicon glyphicon-arrow-left"/></div>
+	<div class="container">
+		<div class="row" id="owlTitle">
+			<div class="col-xs-12">
+			  <h3 class="text-center">发布快速交易</h3>
+			</div>
+			<div>
+				<br/><br/>
+			</div>
+		</div>
+		<div class="row" id="formExc">
+			<form action="./generateFastExc" method="post" onsubmit="return verify()">
+			
+				<div class="formGrp opacity-7" id="formWechat">
+					<div class="form-group">
+						<label class="control-label" for="inputWeChat">微信号</label>
+						<input type="text" class="form-control" id="inputWeChat" placeholder="WeChat" name="wechat" />
+					</div>
+				</div>
+				
+				<div class="formGrp opacity-7" id="formBook">
+					<div class="form-group">
+						<label class="control-label" for="inputBook">书名</label>
+						<input type="text" class="form-control" id="inputBook" placeholder="Your Books" name="book" />
+					</div>
+				</div>
+				
+				<div class="formGrp opacity-7" id="formDesc">
+					<div class="form-group">
+						<label class="control-label" for="inputDescription">描述</label>
+						<textarea class="form-control" rows="4" id="inputDescription" placeholder="Descriptions about your condition of the books" name="description" ></textarea>
+					</div>
+				</div>
+				
+				<div class="col-xs-10 col-xs-offset-1" style="margin-top:5%">
+					<button type="submit" class="btn btn-default btn-block" >提交</button>
+				</div>
+				
+			</form>
+		</div>
+		
+		<div id="otherExc">
+			<a role="button" class="btn btn-warning" href="./viewExc">查看其他快速交易</a>
+		</div>
+
+	</div>
+  </body>
+</html>

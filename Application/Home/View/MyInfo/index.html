@@ -1,0 +1,43 @@
+<div class="ui-grid-a">
+	<div class="ui-block-a margin-auto">
+
+	</div>
+
+	<div class="ui-block-b margin-auto">
+		<p class="color-grey">ID:{$result['nickname']}</p>
+	</div>
+</div>
+
+<table class="width-max">
+	<tr>
+		<td>昵称</td>
+		<td>{$result['nickname']}</td>
+	</tr>
+	<tr>
+		<td>性别</td>
+		<td>
+			<if condition="$result['sex'] eq '1' ">男</if>
+			<if condition="$result['sex'] eq '2' ">女</if>
+		</td>
+	</tr>
+	<tr>
+		<td>手机号</td>
+		<td>{$result['phone']}</td>
+	</tr>
+	<tr>
+		<td>学院</td>
+		<td>{$result['school']}</td>
+	</tr>
+	<tr>
+		<td>学号</td>
+		<td>{$result['studentnumber']}</td>
+	</tr>
+</table>
+<br/>
+<a data-role="button" href="../MyInfo/changeInfo">Change Info</a>
+
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+	$('#title').html('个人信息');
+</script>

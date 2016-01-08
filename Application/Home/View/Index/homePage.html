@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/owl-theme.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/jquery.mobile.icons.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/flexslider.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/main.css" />
+	
+    <title>欢迎使用高校猫头鹰系统</title>
+	
+	<style type="text/css">
+		#hpSlider{
+			width: 100% ;
+			height: 20% ;
+		}
+	</style>
+	
+  </head>
+  <body>
+  	<div data-role="page">
+
+		<div data-role="header" data-position="fixed" id="owlTitle">
+			<a href="./logout" data-role="button" data-icon="delete">退出</a>
+			<h3 id="title">高校猫头鹰</h3>
+		</div>
+		
+		<div data-role="content" id="hpContent">
+
+	    </div>
+		
+		<div data-role="footer" data-position="fixed">	
+			<div data-role="navbar">
+		      <ul>
+		        <li><button data-icon="home" id="mainPage">主页</button></li>
+		        <li><button data-icon="grid" id="oldBook">旧书交换</button></li>
+		        <li><a href="../FastExc/viewExc" data-icon="refresh">快速交换</a></li>
+		        <li><button data-icon="info" id="myInfo">我的信息</button></li>
+		      </ul>
+		    </div>
+		</div>
+
+	</div>
+
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="__PUBLIC__/js/navigation.js"></script>
+
+	<script>
+
+	$("#hpContent").load("../Index/mainPage");
+	
+	</script>
+  </body>
+
+</html>
